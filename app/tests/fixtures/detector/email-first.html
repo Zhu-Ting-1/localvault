@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>账号先行登录（email-first）</title><link rel="stylesheet" href="fixture.css"></head>
+<body>
+  <div class="card">
+    <a class="back" href="index.html">← 返回测试集</a>
+    <h1>账号先行登录（email-first）</h1>
+    <p class="sub">第一屏只有邮箱框 +「下一步」，密码在下一屏 —— Microsoft / Notion / Zoom 等站的形态。</p>
+
+    <form id="step1" onsubmit="return false">
+      <label for="email">电子邮箱</label>
+      <input id="email" name="loginfmt" type="email" autocomplete="username" placeholder="电子邮件、电话或 Skype">
+      <button type="submit" id="next">下一步</button>
+    </form>
+
+    <form id="step2" style="display:none">
+      <label for="pw">密码</label>
+      <input id="pw" name="passwd" type="password" autocomplete="current-password">
+      <button type="submit">登录</button>
+    </form>
+
+    <div class="note">
+      预期：识别出 1 个 <code>username-only</code> 表单（账号框已配对），图标挂在邮箱框右侧；
+      点击只填邮箱，不点「下一步」。
+    </div>
+  </div>
+</body>
+</html>

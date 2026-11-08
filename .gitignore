@@ -1,0 +1,28 @@
+# 依赖
+node_modules/
+.npm-cache/
+
+# 构建产物
+app/dist/
+app/dist-e2e/          # 端到端测试构建（含测试桥，绝不发布）
+app/.wxt/
+app/.output/
+
+# 测试报告（每次跑都变，不入库）
+app/reports/
+
+# 发布打包产物
+release/
+
+# 真实保险库/本地数据，绝不入库
+*.db
+*.db.bak
+LocalVault-accidental-test-output/
+.migration-notes/
+host/.test-vault/
+
+# 编辑器/系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

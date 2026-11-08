@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SPA 切换</title><link rel="stylesheet" href="fixture.css"></head>
+<body>
+  <div class="card" id="app">
+    <a class="back" href="index.html">← 返回测试集</a>
+    <div id="page">
+      <h1>首页</h1>
+      <p class="sub">SPA 路由切换后才会出现登录框。</p>
+      <button id="go" type="button">进入登录</button>
+    </div>
+    <div class="note">预期：切换后重新识别；扩展不应要求刷新页面。</div>
+  </div>
+  <script>
+    document.getElementById('go').addEventListener('click', function () {
+      history.pushState({ page: 'login' }, '', '#/login');
+      document.getElementById('page').innerHTML = [
+        '<h1>登录</h1>',
+        '<form id="spa-form" action="#" onsubmit="return false">',
+        '<label for="spa-user">用户名</label>',
+        '<input id="spa-user" name="username" autocomplete="username">',
+        '<label for="spa-pass">密码</label>',
+        '<input id="spa-pass" name="password" type="password" autocomplete="current-password">',
+        '<button type="submit">登录</button>',
+        '</form>',
+      ].join('');
+      window.dispatchEvent(new Event('popstate'));
+    });
+  </script>
+</body>
+</html>

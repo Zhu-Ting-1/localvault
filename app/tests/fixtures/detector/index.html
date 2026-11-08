@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LocalVault 识别测试集</title>
+  <link rel="stylesheet" href="fixture.css">
+</head>
+<body>
+  <div class="card">
+    <a class="back" href="../README.md">说明</a>
+    <h1>识别测试集</h1>
+    <p class="sub">用本地 HTTP 打开（file:// 下扩展默认不注入）。每页都应出现 LocalVault 的蓝色描边与右下角状态卡。</p>
+    <div class="list">
+      <a class="item" href="classic.html"><b>经典登录表单</b><span>用户名 + 密码 + 登录按钮</span></a>
+      <a class="item" href="signup-link.html"><b>登录页带注册链接</b><span>表单里有「免费注册」，仍应判登录</span></a>
+      <a class="item" href="react.html"><b>React 受控组件</b><span>模拟框架托管 value 的输入框</span></a>
+      <a class="item" href="vue.html"><b>Vue 表单</b><span>模拟 v-model 输入框</span></a>
+      <a class="item" href="shadow.html"><b>Shadow DOM</b><span>密码框在 open shadow root 内</span></a>
+      <a class="item" href="signup.html"><b>注册表单</b><span>密码 + 确认密码，new-password</span></a>
+      <a class="item" href="change.html"><b>修改密码</b><span>当前 / 新 / 确认三个密码框</span></a>
+      <a class="item" href="hidden.html"><b>隐藏密码框</b><span>display:none，不应识别为可填充</span></a>
+      <a class="item" href="honeypot.html"><b>蜜罐字段</b><span>可见登录框 + 屏幕外密码框</span></a>
+      <a class="item" href="late.html"><b>延迟插入</b><span>1.2 秒后动态插入登录框</span></a>
+      <a class="item" href="spa.html"><b>SPA 切换</b><span>点按钮后替换页面内容</span></a>
+      <a class="item" href="two-forms.html"><b>两个表单</b><span>隐藏表单在前，可见表单在后</span></a>
+      <a class="item" href="no-password.html"><b>反例：无密码框</b><span>只有搜索框，不应出现可填充</span></a>
+      <a class="item" href="disabled.html"><b>反例：禁用密码框</b><span>可见但 disabled</span></a>
+      <a class="item" href="usernameless.html"><b>仅密码框</b><span>两步登录的第一步</span></a>
+      <a class="item" href="iframe-parent.html"><b>iframe 嵌套</b><span>登录框在子框架里，应各自上报</span></a>
+    </div>
+    <div class="note">建议流程：打开本页 → 逐个点开 → 看右下角识别结果 → 点“填充演示” → 打开扩展弹窗看报告。</div>
+  </div>
+</body>
+</html>

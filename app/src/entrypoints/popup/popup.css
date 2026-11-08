@@ -1,0 +1,164 @@
+/* LocalVault popup — 视觉方案 B「玻璃轻蓝」（2026-11-05 用户选定）
+ * 要点：半透明毛玻璃卡片 + 淡蓝光晕背景 + 纯亮蓝按钮（无渐变、无重投影）。
+ * 与后台页面共用同一套「玻璃轻蓝」设计变量（.t-b）。 */
+:root {
+  color-scheme: light;
+  --bg-base: #f2f8ff;
+  --bg-glow: radial-gradient(760px 320px at 80% -8%, rgba(205, 230, 255, .9) 0%, rgba(223, 238, 255, 0) 72%);
+  --card: rgba(255, 255, 255, .76);
+  --card-2: rgba(240, 247, 255, .66);
+  --line: rgba(20, 90, 170, .10);
+  --line-glass: rgba(255, 255, 255, .92);
+  --line-soft: rgba(20, 90, 170, .07);
+  --text: #16202e;
+  --sub: #71839a;
+  --tert: #9aabc0;
+  --blue: #2f95ff;
+  --blue-2: #1f86f5;
+  --blue-tint: rgba(233, 243, 255, .78);
+  --green: #34c759;
+  --red: #ff453a;
+  --orange: #ff9f0a;
+  --glass-blur: blur(18px) saturate(1.45);
+  --card-shadow: 0 10px 30px rgba(30, 90, 170, .09), 0 1px 0 rgba(255, 255, 255, .85) inset;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  width: 380px;
+  margin: 0;
+  padding: 16px;
+  background-color: var(--bg-base);
+  background-image: var(--bg-glow), linear-gradient(180deg, rgba(251, 253, 255, .72), rgba(233, 244, 255, .78));
+  background-attachment: fixed;
+  color: var(--text);
+  font: 12px/1.5 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI",
+    "Microsoft YaHei", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.hidden { display: none !important; }
+
+/* ---------- 头部 ---------- */
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.brand { display: flex; align-items: center; gap: 10px; }
+.appicon {
+  width: 32px; height: 32px; border-radius: 9px;
+  background: rgba(233, 243, 255, .9);
+  border: 1px solid rgba(47, 149, 255, .12);
+  display: grid; place-items: center;
+  color: var(--blue);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .9) inset, 0 2px 8px rgba(30, 90, 170, .06);
+}
+.appicon svg { width: 19px; height: 19px; color: inherit; }
+.title { font-size: 15px; font-weight: 650; letter-spacing: -.2px; }
+.sub { font-size: 10.5px; color: var(--sub); }
+
+.dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #c4cede;
+  box-shadow: 0 0 0 3px rgba(184, 194, 210, .18);
+}
+.dot.ok { background: var(--green); box-shadow: 0 0 0 3px rgba(52, 199, 89, .16); }
+.dot.locked { background: var(--orange); box-shadow: 0 0 0 3px rgba(255, 159, 10, .16); }
+.dot.bad { background: var(--red); box-shadow: 0 0 0 3px rgba(255, 69, 58, .14); }
+
+/* ---------- 卡片（玻璃） ---------- */
+.card {
+  background: var(--card);
+  border: 1px solid var(--line-glass);
+  border-radius: 14px;
+  padding: 12px;
+  box-shadow: var(--card-shadow), 0 0 0 1px rgba(20, 90, 170, .05);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  margin-bottom: 10px;
+}
+
+/* ---------- 按钮 ---------- */
+button {
+  appearance: none;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .72);
+  color: var(--text);
+  font: 12px/1 inherit;
+  padding: 7px 12px;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+button:hover { background: rgba(233, 243, 255, .9); border-color: rgba(47, 149, 255, .28); }
+button.primary {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #fff;
+  font-weight: 600;
+  flex: 1;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .35) inset, 0 3px 8px rgba(47, 149, 255, .16);
+}
+button.primary:hover { background: var(--blue-2); }
+button.primary:disabled { opacity: .5; box-shadow: none; cursor: default; }
+button.danger { color: var(--red); border-color: rgba(255, 69, 58, .22); background: rgba(255, 247, 246, .8); }
+button.full { width: 100%; }
+
+input, textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 8px 10px;
+  font: 12px/1.4 inherit;
+  color: var(--text);
+  background: rgba(255, 255, 255, .7);
+  outline: none;
+}
+input:focus, textarea:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(47, 149, 255, .16);
+}
+
+label { display: block; font-size: 11px; color: var(--sub); margin: 8px 0 4px; }
+
+.error {
+  background: rgba(255, 241, 240, .82);
+  border: 1px solid rgba(255, 69, 58, .18);
+  color: var(--red);
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-size: 11px;
+  margin-bottom: 10px;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+}
+
+.hint { margin-top: 8px; font-size: 10px; color: var(--tert); }
+
+.mono { font-family: ui-monospace, Consolas, monospace; font-size: 11px; letter-spacing: .5px; }
+
+/* 键盘可达性：只在键盘导航时显示焦点框，鼠标点击不打扰 */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #2f95ff;
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* 读屏专用：视觉上不可见，但会被朗读（复制成功之类的状态播报） */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
