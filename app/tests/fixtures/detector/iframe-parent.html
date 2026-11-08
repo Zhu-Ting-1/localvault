@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>iframe 嵌套登录</title><link rel="stylesheet" href="fixture.css"></head>
+<body>
+  <div class="card">
+    <a class="back" href="index.html">← 返回测试集</a>
+    <h1>iframe 嵌套</h1>
+    <p class="sub">登录框在子框架里；父页面没有密码框。</p>
+    <iframe src="iframe-child.html" title="登录子框架"></iframe>
+    <div class="note">预期：父页面 0 个表单；子框架独立识别并上报，弹窗里应出现“iframe”卡片。</div>
+  </div>
+</body>
+</html>

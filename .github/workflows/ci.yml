@@ -1,0 +1,68 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: 测试（Windows）
+    runs-on: windows-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 准备 Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+
+      # postinstall = `wxt prepare`：生成 .wxt/tsconfig.json 与类型声明。
+      # 少了这步，类型检查会报 "Cannot read file .wxt/tsconfig.json"、
+      # defineBackground 未定义等一连串假错。
+      - name: 安装依赖
+        working-directory: app
+        run: npm ci
+
+      # 必须在单元测试之前：app 的端到端用例要启动这个 exe
+      - name: 编译本地助手（用系统自带编译器，无需 .NET SDK）
+        shell: pwsh
+        run: ./host/build.ps1
+
+      - name: 类型检查
+        working-directory: app
+        run: npm run typecheck
+
+      - name: 单元测试（vitest）
+        working-directory: app
+        run: npm test
+
+      - name: 构建扩展
+        working-directory: app
+        run: npm run build
+
+      - name: 扩展静态校验（manifest / 固定 ID / CSP）
+        run: node tools/validate-extension.mjs
+
+      - name: 本地助手测试（协议 / 加密 / v2 / TPM）
+        run: |
+          node host/test-host.mjs
+          node host/test-crypto.mjs
+          node host/test-v2-read.mjs
+          node host/test-tpm.mjs
+
+      - name: 本地后台测试
+        run: node host/test-ui.mjs
+
+      - name: 安全攻击模拟（每个用例都必须攻不破）
+        run: node tools/attack-sim.mjs
+
+      - name: 上传解压后的扩展（构建产物）
+        uses: actions/upload-artifact@v4
+        with:
+          name: chrome-mv3
+          path: app/dist/chrome-mv3
