@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>注册表单</title><link rel="stylesheet" href="fixture.css"></head>
+<body>
+  <div class="card">
+    <a class="back" href="index.html">← 返回测试集</a>
+    <h1>创建账号</h1>
+    <p class="sub">密码 + 确认密码</p>
+    <form id="signup-form" action="#" onsubmit="return false">
+      <label for="su-email">邮箱</label>
+      <input id="su-email" name="email" type="email" autocomplete="email">
+      <label for="su-pass">密码</label>
+      <input id="su-pass" name="password" type="password" autocomplete="new-password">
+      <label for="su-pass2">确认密码</label>
+      <input id="su-pass2" name="password_confirm" type="password" autocomplete="new-password">
+      <button type="submit">注册</button>
+    </form>
+    <div class="note">预期：注册框，2 个可填充密码框，用户名（邮箱）已配对。</div>
+  </div>
+</body>
+</html>

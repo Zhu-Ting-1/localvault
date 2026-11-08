@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>两个表单</title><link rel="stylesheet" href="fixture.css"></head>
+<body>
+  <div class="card">
+    <a class="back" href="index.html">← 返回测试集</a>
+    <h1>两个表单</h1>
+    <p class="sub">隐藏表单在前，可见表单在后；应选可见的那个。</p>
+    <form id="hidden-form" action="#" onsubmit="return false" style="display:none">
+      <input name="username" autocomplete="username">
+      <input name="password" type="password" autocomplete="current-password">
+    </form>
+    <form id="visible-form" action="#" onsubmit="return false">
+      <label for="vf-user">用户名</label>
+      <input id="vf-user" name="username" autocomplete="username">
+      <label for="vf-pass">密码</label>
+      <input id="vf-pass" name="password" type="password" autocomplete="current-password">
+      <button type="submit">登录</button>
+    </form>
+    <div class="note">预期：只返回 1 个登录框，容器是 #visible-form。</div>
+  </div>
+</body>
+</html>

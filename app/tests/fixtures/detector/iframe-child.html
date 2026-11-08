@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>iframe 子框架登录</title><link rel="stylesheet" href="fixture.css"></head>
+<body style="padding:16px;background:#f8fbff">
+  <div class="card" style="width:100%;box-shadow:none">
+    <h1 style="font-size:18px">子框架登录</h1>
+    <p class="sub">这个表单在 iframe 里。</p>
+    <form id="iframe-form" action="#" onsubmit="return false">
+      <label for="if-user">用户名</label>
+      <input id="if-user" name="username" autocomplete="username">
+      <label for="if-pass">密码</label>
+      <input id="if-pass" name="password" type="password" autocomplete="current-password">
+      <button type="submit">登录</button>
+    </form>
+  </div>
+</body>
+</html>

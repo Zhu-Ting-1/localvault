@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>延迟插入登录框</title><link rel="stylesheet" href="fixture.css"></head>
+<body>
+  <div class="card">
+    <a class="back" href="index.html">← 返回测试集</a>
+    <h1>延迟插入</h1>
+    <p class="sub">页面加载 1.2 秒后才插入登录框，考验 MutationObserver / 轮询。</p>
+    <div id="slot"><p class="muted" id="waiting">等待登录框…</p></div>
+    <button class="secondary" id="show" type="button">立刻显示登录框</button>
+    <div class="note">预期：1.2 秒内自动识别；点按钮也应立即识别。</div>
+  </div>
+  <script>
+    var inserted = false;
+    function insertForm() {
+      if (inserted) return;
+      inserted = true;
+      var slot = document.getElementById('slot');
+      slot.innerHTML = [
+        '<form id="late-form" action="#" onsubmit="return false">',
+        '<label for="late-user">用户名</label>',
+        '<input id="late-user" name="username" autocomplete="username">',
+        '<label for="late-pass">密码</label>',
+        '<input id="late-pass" name="password" type="password" autocomplete="current-password">',
+        '<button type="submit">登录</button>',
+        '</form>',
+      ].join('');
+    }
+    document.getElementById('show').addEventListener('click', insertForm);
+    setTimeout(insertForm, 1200);
+  </script>
+</body>
+</html>
