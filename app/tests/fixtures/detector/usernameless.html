@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>仅密码框</title><link rel="stylesheet" href="fixture.css"></head>
+<body>
+  <div class="card">
+    <a class="back" href="index.html">← 返回测试集</a>
+    <h1>仅密码</h1>
+    <p class="sub">两步登录的第一步：只有密码框，没有用户名。</p>
+    <form id="only-pass-form" action="#" onsubmit="return false">
+      <label for="op-pass">密码</label>
+      <input id="op-pass" name="password" type="password" autocomplete="current-password">
+      <button type="submit">继续</button>
+    </form>
+    <div class="note">预期：登录框，username = null，仍可识别。</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "name": "localvault",
+  "private": true,
+  "version": "0.3.3",
+  "description": "LocalVault - 本地密码管理器（浏览器扩展 + 本地助手，零网络，保险库只存本机）",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "test": "npm run test:host && npm run validate && npm run test:ui",
+    "test:host": "node host/test-host.mjs && node host/test-crypto.mjs && node host/test-v2-read.mjs && node host/test-tpm.mjs",
+    "test:ui": "node host/test-ui.mjs && node host/test-ui-only.mjs",
+    "test:attack": "node tools/attack-sim.mjs",
+    "validate": "node tools/validate-extension.mjs",
+    "fixtures": "node tools/serve-fixtures.mjs",
+    "app:test": "cd app && npm test",
+    "app:build": "cd app && npm run build",
+    "app:e2e": "cd app && node tests/e2e-fill.mjs",
+    "app:e2e-dual": "cd app && node tests/e2e-dual-browser.mjs",
+    "host:build": "powershell -NoProfile -ExecutionPolicy Bypass -File host/build.ps1",
+    "install:host": "powershell -NoProfile -ExecutionPolicy Bypass -File installer/install.ps1",
+    "diagnose": "powershell -NoProfile -ExecutionPolicy Bypass -File installer/install.ps1 -Diagnose",
+    "package": "node tools/package-release.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Xmind 登录</title><link rel="stylesheet" href="fixture.css"></head>
+<body>
+  <div class="card">
+    <a class="back" href="index.html">← 返回测试集</a>
+    <h1>登录 Xmind 账户</h1>
+    <p class="sub">账号 + 密码，页面上另有「验证码登录」标签与订阅表单</p>
+
+    <div class="tabs">
+      <button class="tab active" type="button">密码登录</button>
+      <button class="tab" type="button">验证码登录</button>
+    </div>
+
+    <div class="signin-layout__tab-content">
+      <form>
+        <div class="signin-layout__form-inputs">
+          <div class="xm-uikit-input was-validated">
+            <div>
+              <input name="account" data-test="account-input" type="text" placeholder="输入邮箱/Xmind帐号" autocomplete="false" class="form-control">
+            </div>
+          </div>
+          <div class="xm-uikit-input was-validated">
+            <div class="input-icon has-icon-right">
+              <input name="pwd" data-test="pwd-input" type="password" maxlength="64" placeholder="输入密码" autocomplete="false" class="form-control">
+              <div class="form-control-icon is-right icon-hide"></div>
+            </div>
+          </div>
+        </div>
+        <div class="xm-form-message mb-4 error" style="display: none;"></div>
+        <div class="xm-uikit-button signin-layout__submit-btn">
+          <button disabled="disabled" type="submit" data-test="account-submit-btn" class="btn btn-primary">登录</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="note">忘记密码？　还没有账户？ 创建账户</div>
+    <div class="third">第三方快捷登录</div>
+
+    <form id="subscribe_form" action="" method="POST">
+      <div class="subscribe__form-input">
+        <input type="text" name="email" value="" placeholder="输入您的邮箱地址">
+        <button type="submit">订阅</button>
+      </div>
+    </form>
+
+    <div class="note">预期：登录框，账号框 name=account，1 个可填充密码框；订阅表单不应被当成登录。</div>
+  </div>
+</body>
+</html>
