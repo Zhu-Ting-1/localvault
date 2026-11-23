@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>React 受控组件</title><link rel="stylesheet" href="fixture.css"></head>
+<body>
+  <div class="card" id="root">
+    <a class="back" href="index.html">← 返回测试集</a>
+    <h1>登录 React</h1>
+    <p class="sub">模拟 React 受控输入框（value 由框架管理）</p>
+    <form id="react-login" action="#" onsubmit="return false">
+      <label for="react-email">Email</label>
+      <input id="react-email" name="email" autocomplete="username" data-react="1" placeholder="you@example.com">
+      <label for="react-password">Password</label>
+      <input id="react-password" name="password" type="password" autocomplete="current-password" data-react="1">
+      <button type="submit">Sign in</button>
+    </form>
+    <div class="note" id="state">等待输入…</div>
+  </div>
+  <script>
+    // 模拟受控组件：记录事件，但不阻止扩展用原生 setter 填值。
+    var email = document.getElementById('react-email');
+    var pass = document.getElementById('react-password');
+    var state = document.getElementById('state');
+    function sync() {
+      state.textContent = '输入事件已触发：' + (email.value || '(空)') + ' / ' + (pass.value ? '••••' : '(空)');
+    }
+    email.addEventListener('input', sync);
+    pass.addEventListener('input', sync);
+  </script>
+</body>
+</html>

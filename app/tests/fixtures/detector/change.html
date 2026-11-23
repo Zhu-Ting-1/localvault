@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>修改密码</title><link rel="stylesheet" href="fixture.css"></head>
+<body>
+  <div class="card">
+    <a class="back" href="index.html">← 返回测试集</a>
+    <h1>修改密码</h1>
+    <p class="sub">当前密码 / 新密码 / 确认新密码</p>
+    <form id="change-form" action="#" onsubmit="return false">
+      <label for="cur-pass">当前密码</label>
+      <input id="cur-pass" name="current_password" type="password" autocomplete="current-password">
+      <label for="new-pass">新密码</label>
+      <input id="new-pass" name="new_password" type="password" autocomplete="new-password">
+      <label for="new-pass2">确认新密码</label>
+      <input id="new-pass2" name="confirm_password" type="password" autocomplete="new-password">
+      <button type="submit">更新密码</button>
+    </form>
+    <div class="note">预期：改密框，3 个密码框；按钮/标题含“修改密码”。</div>
+  </div>
+</body>
+</html>

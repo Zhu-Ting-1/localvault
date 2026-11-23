@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>禁用密码框</title><link rel="stylesheet" href="fixture.css"></head>
+<body>
+  <div class="card">
+    <a class="back" href="index.html">← 返回测试集</a>
+    <h1>禁用密码框（反例）</h1>
+    <p class="sub">密码框可见但 disabled，不应被当成可填充。</p>
+    <form id="disabled-form" action="#" onsubmit="return false">
+      <label for="d-user">用户名</label>
+      <input id="d-user" name="username" autocomplete="username" disabled>
+      <label for="d-pass">密码</label>
+      <input id="d-pass" name="password" type="password" autocomplete="current-password" disabled>
+      <button type="submit" disabled>登录</button>
+    </form>
+    <div class="note">预期：0 个可填充表单。</div>
+  </div>
+</body>
+</html>

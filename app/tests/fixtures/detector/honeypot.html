@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>蜜罐字段</title><link rel="stylesheet" href="fixture.css"></head>
+<body>
+  <div class="card">
+    <a class="back" href="index.html">← 返回测试集</a>
+    <h1>蜜罐字段</h1>
+    <p class="sub">可见登录框 + 屏幕外密码框（常见反机器人蜜罐）。</p>
+    <form id="hp-form" action="#" onsubmit="return false">
+      <label for="hp-user">用户名</label>
+      <input id="hp-user" name="username" autocomplete="username">
+      <label for="hp-pass">密码</label>
+      <input id="hp-pass" name="password" type="password" autocomplete="current-password">
+      <input name="hp_password" type="password" tabindex="-1" aria-hidden="true"
+             style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;opacity:0">
+      <button type="submit">登录</button>
+    </form>
+    <div class="note">预期：识别 1 个登录框；蜜罐字段被排除，不显示为可填充。</div>
+  </div>
+</body>
+</html>

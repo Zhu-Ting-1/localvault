@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>隐藏密码框</title><link rel="stylesheet" href="fixture.css"></head>
+<body>
+  <div class="card">
+    <a class="back" href="index.html">← 返回测试集</a>
+    <h1>隐藏密码框</h1>
+    <p class="sub">密码框 display:none，不应被当成可填充。</p>
+    <form id="hidden-form" action="#" onsubmit="return false">
+      <label for="h-user">用户名</label>
+      <input id="h-user" name="username" autocomplete="username">
+      <input id="h-pass" name="password" type="password" autocomplete="current-password" style="display:none">
+      <button type="submit">登录</button>
+    </form>
+    <div class="note">预期：识别结果为“未发现可见密码框”；统计里 hiddenPasswords = 1。</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vue 表单</title><link rel="stylesheet" href="fixture.css"></head>
+<body>
+  <div class="card" id="app">
+    <a class="back" href="index.html">← 返回测试集</a>
+    <h1>登录 Vue</h1>
+    <p class="sub">模拟 v-model 输入框</p>
+    <form id="vue-login" action="#" onsubmit="return false">
+      <label for="vue-user">账号</label>
+      <input id="vue-user" name="account" autocomplete="username" data-vue="1">
+      <label for="vue-pass">密码</label>
+      <input id="vue-pass" name="password" type="password" autocomplete="current-password" data-vue="1">
+      <button type="submit">登录</button>
+    </form>
+    <div class="note">预期：登录框，账号字段通过 name/autocomplete 配对。</div>
+  </div>
+  <script>
+    // 模拟 v-model：只监听 input，不重写 value。
+    var app = document.getElementById('app');
+    app.addEventListener('input', function (e) {
+      if (e.target && e.target.tagName === 'INPUT') {
+        e.target.setAttribute('data-touched', '1');
+      }
+    });
+  </script>
+</body>
+</html>

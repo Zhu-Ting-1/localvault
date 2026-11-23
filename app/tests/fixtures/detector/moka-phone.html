@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Moka 手机号登录</title><link rel="stylesheet" href="fixture.css"></head>
+<body>
+  <div class="card">
+    <a class="back" href="index.html">← 返回测试集</a>
+    <h1>手机号登录</h1>
+    <p class="sub">组件库给所有输入框统一加了 maxlength="255"，但文案明确写了「验证码」</p>
+
+    <div class="tabs">
+      <button class="tab active" type="button">手机号登录</button>
+      <button class="tab" type="button">邮箱登录</button>
+    </div>
+
+    <div class="login-panel">
+      <div class="phone-row">
+        <label class="sd-Input-container">
+          <span>+86</span>
+          <input type="text" readonly value="+86">
+        </label>
+        <label class="sd-Input-container">
+          <input type="text" placeholder="请输入手机号" maxlength="255">
+        </label>
+      </div>
+      <div class="code-row">
+        <label class="sd-Input-container">
+          <input type="text" placeholder="请输入验证码" maxlength="255">
+        </label>
+        <button type="button">获取验证码</button>
+      </div>
+      <button type="button">登录</button>
+    </div>
+
+    <div class="note">预期：验证码登录表单，账号框=请输入手机号，验证码框=请输入验证码。</div>
+  </div>
+</body>
+</html>

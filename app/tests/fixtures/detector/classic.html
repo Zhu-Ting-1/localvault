@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>经典登录表单</title><link rel="stylesheet" href="fixture.css"></head>
+<body>
+  <div class="card">
+    <a class="back" href="index.html">← 返回测试集</a>
+    <h1>登录 Classic</h1>
+    <p class="sub">用户名 + 密码 + 登录按钮</p>
+    <form id="login-form" action="#" onsubmit="return false">
+      <label for="username">用户名</label>
+      <input id="username" name="username" autocomplete="username" placeholder="you@example.com">
+      <label for="password">密码</label>
+      <input id="password" name="password" type="password" autocomplete="current-password">
+      <button type="submit">登录</button>
+    </form>
+    <div class="note">预期：登录框，用户名已配对，1 个可见密码框。</div>
+  </div>
+</body>
+</html>
